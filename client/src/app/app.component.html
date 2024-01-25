@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+  <span>Todo app</span>
+</mat-toolbar>
+
+<mat-grid-list cols="5" rowHeight="2:1" gutterSize="20px" style="margin-top: 20px;">
+  <mat-grid-tile *ngFor="let todo of todos()">
+    <mat-card>
+      <mat-card-header>
+
+        <mat-card-title>
+          <h2 style="display: inline-block;">{{ todo.title }}</h2>
+        
+          <mat-icon
+            [color]="todo.done ? 'primary' : 'accent'"
+            style="margin-left: 10px; cursor: pointer;"
+            (click)="toggleTodo(todo)"
+          >
+            {{ todo.done ? 'check_circle' : 'cancel' }}
+          </mat-icon>
+          
+        </mat-card-title>
+
+        <mat-card-subtitle>{{ todo.date }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-actions align="end">
+        <button color="primary" mat-button (click)="updateTodo(todo)">Edit</button>
+        <button color="accent" mat-button (click)="deleteTodo(todo)">Delete</button>
+      </mat-card-actions>
+
+    </mat-card>
+  </mat-grid-tile>
+  
+</mat-grid-list>
+
+
+<mat-paginator
+  #paginator
+  [length]="this.metaPagination().total"
+  [pageSize]="this.metaPagination().pageSize"
+  [pageSizeOptions]="[5, 10, 15, 20]"
+></mat-paginator>
+
+<div class="new">
+  <button 
+    mat-fab 
+    matTooltip="New todo"
+    (click)="createTodo()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

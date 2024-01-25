@@ -1,0 +1,27 @@
+mat-card {
+    width: 90%;
+    height: 90%;
+
+    .icon-red {
+        color: red;
+    }
+
+    .icon-green {
+        color: green;
+    }
+
+    .card-title-content {
+        display: inline;
+    }
+}
+
+.new {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-top: 20px;
+
+    button {
+        margin-right: 10px !important;
+    }
+}
